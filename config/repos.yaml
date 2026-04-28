@@ -1,0 +1,46 @@
+defaults:
+  # Prompt base del revisor IA (aplicable a todas las repos salvo override por repo)
+  prompt: >-
+    Revisa este pull request en busca de errores funcionales, regresiones, riesgos operativos
+    y ausencia de tests. Devuelve una respuesta clara, corta y accionable.
+
+  # Rutas incluidas/excluidas para orientar el contexto de revisión
+  include_paths: []
+  exclude_paths:
+    - .git/
+    - node_modules/
+    - dist/
+
+  # Archivo opcional por repo para configurar prompt y alcance de revisión
+  config_path: .pr-reviewer.yml
+
+  # Archivo de requisitos funcionales del proyecto (prioridad alta en el prompt)
+  requirements_file: requerimientos.md
+
+  # Comando del motor de revisión IA
+  opencode_command:
+    - opencode.cmd
+    - run
+
+repos:
+  # Lista de repositorios atendidos por el servicio
+  - workspace: pruebas-sandbox
+    slug: proyecto-prueba
+
+    # URL de clonación usada por el bot para preparar workspaces de PR
+    clone_url: https://pruebas-sandbox-admin@bitbucket.org/pruebas-sandbox/proyecto-prueba.git
+
+    # Ruta local del clon "humano" (uso manual por SSH + opencode)
+    human_workspace_root: C:/Users/Practicas 2025/Desktop/SANDBOX/todo-minimo
+
+    # Ruta local del bot (mirror + workspaces de revisión por PR)
+    bot_workspace_root: C:/pr-revisor-bot/proyecto-prueba
+
+    # Nombres de variables de entorno con secretos (NO poner secretos aquí)
+    webhook_secret_env: BB_PRUEBAS_SANDBOX_WEBHOOK_SECRET
+    bitbucket_token_env: BB_PRUEBAS_SANDBOX_API_TOKEN
+
+    # Override de revisión específico de esta repo
+    review:
+      prompt: >-
+        Revisa este PR con foco en mantenibilidad, corrección y seguridad para entorno compartido.

@@ -1,0 +1,24 @@
+# Entornos/secretos locales
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Build/metadata
+*.egg-info/
+
+# Runtime local
+data/
+var/
+temp-data/
+temp-var/
+
+# Artefactos internos locales
+.atl/

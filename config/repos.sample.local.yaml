@@ -1,0 +1,36 @@
+defaults:
+  # Prompt base del revisor (salida JSON obligatoria)
+  prompt: >-
+    Revisa el PR y responde solo con el contrato JSON requerido
+    (status, summary, review_body, findings).
+
+  # Alcance opcional de rutas
+  include_paths: []
+  exclude_paths: []
+
+  # Configuración por repo dentro del propio proyecto objetivo
+  config_path: .pr-reviewer.yml
+
+  # Documento de requisitos funcionales del proyecto
+  requirements_file: requerimientos.md
+
+  # Motor IA para revisión automática
+  opencode_command: [opencode.cmd, run]
+
+repos:
+  # Ejemplo de registro de repositorio atendido por el servicio
+  - workspace: mi-workspace
+    slug: mi-repo
+
+    # URL de clonación del repositorio objetivo
+    clone_url: git@bitbucket.org:mi-workspace/mi-repo.git
+
+    # Clon usado por personas (SSH + opencode manual)
+    human_workspace_root: C:/src/mi-repo
+
+    # Clon usado por el bot para mirrors y workspaces PR
+    bot_workspace_root: C:/pr-revisor-bot/mi-repo
+
+    # Variables de entorno con secretos (solo nombres)
+    webhook_secret_env: BB_MI_REPO_WEBHOOK_SECRET
+    bitbucket_token_env: BB_MI_REPO_API_TOKEN

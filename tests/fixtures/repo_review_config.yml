@@ -1,0 +1,5 @@
+prompt: Focus on Python error handling and test gaps.
+include_paths:
+  - service/
+exclude_paths:
+  - docs/

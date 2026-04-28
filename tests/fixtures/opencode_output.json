@@ -1,0 +1,6 @@
+{
+  "status": "changes_requested",
+  "summary": "Found one missing failure path test.",
+  "review_body": "Please add coverage for invalid signatures.",
+  "findings": ["No test covers invalid webhook signature handling"]
+}

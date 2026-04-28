@@ -1,0 +1,22 @@
+{
+  "repository": {
+    "slug": "demo-repo",
+    "workspace": {"slug": "demo-workspace"}
+  },
+  "pullrequest": {
+    "id": 42,
+    "title": "Improve webhook parser",
+    "author": {"display_name": "Alice"},
+    "source": {
+      "branch": {"name": "feature/parser"},
+      "commit": {"hash": "abc123source"}
+    },
+    "destination": {
+      "branch": {"name": "main"},
+      "commit": {"hash": "def456target"}
+    },
+    "links": {
+      "html": {"href": "https://bitbucket.org/demo-workspace/demo-repo/pull-requests/42"}
+    }
+  }
+}
